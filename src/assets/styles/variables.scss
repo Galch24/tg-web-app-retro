@@ -1,0 +1,46 @@
+$font-serif-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+"Segoe UI Emoji", "Segoe UI Symbol";
+$font-mono-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+"Courier New", monospace;
+
+$font-base-family: 'Manrope', $font-serif-family;
+$font-decorative-family: 'Inter', $font-serif-family;
+
+
+/*
+* Breakpoints
+*/
+$media-phone: 450px;
+$media-tablet: 768px;
+$media-tablet-landscape: 1024px;
+$media-desktop: 1366px;
+$media-lg: 1800px;
+$font-base: 16px;
+
+/*
+* Colors
+*/
+
+$color-white: #fff;
+$color-black: #000;
+$color-gray: #787878;
+
+$color-primary: #0D3F34;
+$color-accent: #00CE7E;
+
+$color-text: #132E29;
+
+$color-positive: #12b23f;
+$color-negative: #F00;
+
+$color-border-light: #DAE1E2;
+
+/*
+* transition
+*/
+
+$transition-time: 0.4s;
+$transition-ease: ease;
+
+$full-width: 1920px;
