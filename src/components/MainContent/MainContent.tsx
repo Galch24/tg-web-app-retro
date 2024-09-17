@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";
 import {useWindowSize} from "@/hooks/useWindowSize";
+import {MainActions} from "@/components/MainContent/ui/MainActions";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP);
 
@@ -66,7 +67,7 @@ export const MainContent = () => {
               <h2>Проекты:</h2>
               <ul>
                 <li>
-                  Яндекс HR /360 /Финтех/ вёрстка баннерв, писем,вики страниц, лендингов
+                  Яндекс HR /360 /Финтех/ вёрстка баннеров, писем,вики страниц, лендингов
                 </li>
                 <li>
                   МТС /Сайты Membrana и Cosmos
@@ -175,6 +176,7 @@ export const MainContent = () => {
           </SBlockWrapper>
         </div>
       </section>
+      <MainActions sectionId={'mainActions'} />
     </Box>
   );
 };

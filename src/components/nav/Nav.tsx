@@ -39,11 +39,7 @@ const Nav = ({ onNavClick }: NavProps) => {
   const { windowWidth, desktopWidth } = useWindowSize()
   const [searchParams] = useSearchParams()
   const query = getQueryParams()
-  console.log('---- searchParams = ', searchParams)
-  console.log('---- query = ', query)
-  // const router = useRouter();
   const pathname = window.location.hash ? window.location.hash.replace('#', '') : '/'
-  console.log('---- pathname = ', pathname)
   const isMainPage = pathname === "/"
   return (
     <ListStyled>
