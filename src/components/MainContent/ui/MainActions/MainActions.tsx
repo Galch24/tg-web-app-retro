@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import {Box, Button} from "@mui/material";
 import {
   SBlockWrapper,
@@ -17,19 +17,32 @@ export const MainActions = ({ sectionId }: MainActionsProps) => {
   const {tg, user, onClose} = useTelegram();
   const [sended, setSended] = useState(false)
 
-  const handleAction = useCallback(async () => {
+  const onSendData = useCallback(async () => {
     const data = {
-      user: `${user} передал привет`,
+      username: `${user?.username}`,
     }
     await tg.sendData(JSON.stringify(data));
     setSended(true)
+  }, [])
+
+  useEffect(() => {
+    tg.onEvent('mainButtonClicked', onSendData)
+    return () => {
+      tg.offEvent('mainButtonClicked', onSendData)
+    }
+  }, [onSendData])
+
+  useEffect(() => {
+    tg.MainButton.setParams({
+      text: 'Отправить данные'
+    })
   }, [])
 
   return (
     <section id={sectionId}>
       <Box>
         <SBlockWrapper>
-          <SActionButton onClick={handleAction}>Передать привет Dev Unit</SActionButton>
+          <SActionButton onClick={onSendData}>Передать привет Dev Unit</SActionButton>
           {sended && (
             <Box sx={{ mt: 4, color: '#333' }}>
               Привет, {`${user?.username}`}
