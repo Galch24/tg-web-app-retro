@@ -13,12 +13,14 @@ type MainActionsProps = {
 
 export const MainActions = ({ sectionId }: MainActionsProps) => {
   const {tg, user} = useTelegram();
+  const [sended, setSended] = useState(false)
 
-  const handleAction = useCallback(() => {
+  const handleAction = useCallback(async () => {
     const data = {
       user: `${user} передал привет`,
     }
-    tg.sendData(JSON.stringify(data));
+    await tg.sendData(JSON.stringify(data));
+    setSended(true)
   }, [])
 
   return (
@@ -26,6 +28,11 @@ export const MainActions = ({ sectionId }: MainActionsProps) => {
       <Box sx={{ paddingTop: 3 }}>
         <SBlockWrapper>
           <SActionButton onClick={handleAction}>Передать привет Dev Unit</SActionButton>
+          {sended && (
+            <Box sx={{ mt: 4, color: '#333' }}>
+              Привет, {`${user}`}
+            </Box>
+          )}
         </SBlockWrapper>
       </Box>
     </section>
