@@ -1,14 +1,9 @@
-import React, {useEffect, useRef, useState} from "react";
-import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
-import { theme, media } from "@/assets/styles/Theme";
-import { navData } from "@/data/nav";
+import React, {useRef, useState} from "react";
 import { Box } from "@mui/material";
 import {
   SBlockWrapper,
   SContentWrapper,
 } from "@/components/MainContent/styled";
-import { debounce } from "lodash";
 
 import gsap from "gsap";
 
@@ -24,77 +19,6 @@ export const MainContent = () => {
   const main = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSlide, setActiveSlide] = useState<number>(0);
-
-  useEffect(() => {
-    if (windowWidth > 1366) {
-      const panels = gsap.utils.toArray(".panel") as HTMLElement[];
-      panels.forEach((panel, i) => {
-        ScrollTrigger.create({
-          trigger: panel,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-          anticipatePin: 1,
-          fastScrollEnd: false,
-          onToggle: debounce((self) => {
-            if (self.isActive) {
-              setActiveIndex(i);
-              goToSection(i);
-            }
-          }, 100),
-          id: `panel-${i}`,
-        });
-      });
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      gsap.killTweensOf(window);
-    };
-  }, [windowWidth]);
-
-  const goToSection = (i: number) => {
-    gsap.to(window, {
-      scrollTo: {
-        y: i * window.innerHeight,
-        autoKill: false,
-      },
-      duration: 1,
-      // ease: "power2.inOut",
-      overwrite: "auto",
-    });
-  };
-
-  useEffect(() => {
-    const handleTouch = debounce((event: TouchEvent) => {
-      if (!lastY) {
-        lastY = event.touches[0].clientY;
-        return;
-      }
-
-      const deltaY = event.touches[0].clientY - lastY;
-
-      if (deltaY > 20) {
-        goToSection(activeIndex + 1);
-      } else if (deltaY < -20) {
-        goToSection(activeIndex - 1);
-      }
-
-      lastY = event.touches[0].clientY;
-    }, 100);
-
-    let lastY: number | null;
-
-    window.addEventListener("touchmove", handleTouch, { passive: true });
-
-    return () => {
-      window.removeEventListener("touchmove", handleTouch);
-    };
-  }, [activeIndex]);
-
-  const isActive = (indexRange: [number, number]) => {
-    return activeIndex > indexRange[0] && activeIndex < indexRange[1];
-  };
 
   return (
     <Box ref={main} sx={{ width: '100%' }}>
