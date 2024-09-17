@@ -98,7 +98,7 @@ export const MainContent = () => {
 
   return (
     <Box ref={main} sx={{ width: '100%' }}>
-      <section id="dev" className={`panel`}>
+      <section id="dev">
         <div>
           <SBlockWrapper>
             <SContentWrapper>
@@ -135,7 +135,7 @@ export const MainContent = () => {
           </SBlockWrapper>
         </div>
       </section>
-      <section id="projects" className={`panel`}>
+      <section id="projects">
         <div>
           <SBlockWrapper>
             <SContentWrapper>
@@ -164,7 +164,7 @@ export const MainContent = () => {
           </SBlockWrapper>
         </div>
       </section>
-      <section id="new" className={`panel`}>
+      <section id="new">
         <div>
           <SBlockWrapper>
             <SContentWrapper>
@@ -196,7 +196,7 @@ export const MainContent = () => {
           </SBlockWrapper>
         </div>
       </section>
-      <section id="tsekh" className={`panel`}>
+      <section id="tsekh">
         <div>
           <SBlockWrapper >
             <SContentWrapper>
@@ -219,7 +219,7 @@ export const MainContent = () => {
           </SBlockWrapper>
         </div>
       </section>
-      <section id="automate" className={`panel`}>
+      <section id="automate">
         <div>
           <SBlockWrapper>
             <SContentWrapper>
