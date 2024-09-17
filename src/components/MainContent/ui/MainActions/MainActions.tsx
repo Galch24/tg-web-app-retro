@@ -20,10 +20,11 @@ export const MainActions = ({ sectionId }: MainActionsProps) => {
   const onSendData = useCallback(async () => {
     const data = {
       username: `${user?.username}`,
+      user: user,
     }
     await tg.sendData(JSON.stringify(data));
     setSended(true)
-  }, [])
+  }, [user?.username])
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData)
