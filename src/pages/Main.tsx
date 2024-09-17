@@ -7,6 +7,8 @@ import { mainDomen } from "@/shared/config/env";
 import { useEffect } from "react";
 import {Box, Button} from "@mui/material";
 import { useTelegram } from "@/hooks/useTelegram";
+import { MainContent } from "@/components/MainContent";
+import { SButtonClose, SPageContent } from "@/pages/styled";
 
 const Main = () => {
   const crumbs = [
@@ -25,12 +27,12 @@ const Main = () => {
       <title>Ретро 2024</title>
     </Helmet>
     <Layout>
-      <Container>
-        <Box sx={{ mt: 4 }}>
-          Содержимое
-          <Button onClick={onClose}>Закрыть</Button>
-        </Box>
-      </Container>
+      <SPageContent sx={{ mt: 1, paddingTop: '60px', position: 'relative' }}>
+        <Container>
+          <SButtonClose onClick={onClose}>Закрыть</SButtonClose>
+          <MainContent />
+        </Container>
+      </SPageContent>
     </Layout>
   </>
   );

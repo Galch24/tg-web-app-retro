@@ -40,7 +40,7 @@ const HeaderWrapperLeft = styled.div`
   a {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 
@@ -95,7 +95,7 @@ const Burger = styled.button<BurgerProps>`
 
 const BurgerMenu = styled.div<BurgerProps>`
   position: fixed;
-  top: 90px;
+  top: 65px;
   right: 0;
   height: 0;
   width: 100%;
@@ -123,7 +123,7 @@ const Header = () => {
     <HeaderBlock>
         <HeaderWrapper>
           <HeaderWrapperLeft>
-            <Link to={mainDomen}>
+            <Link to='/'>
               <Logo />
             </Link>
           </HeaderWrapperLeft>
@@ -136,7 +136,7 @@ const Header = () => {
         </HeaderWrapper>
       {isMobileNavOpen && windowWidth <= 1200 && (
         <BurgerMenu isActive={isMobileNavOpen}>
-          <Nav />
+          <Nav onNavClick={toggleMobileNav} />
         </BurgerMenu>
       )}
     </HeaderBlock>

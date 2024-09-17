@@ -47,3 +47,23 @@ export const getQueryParams = (query: any = null) => {
       }, {})
   );
 };
+
+export const scrollToBlock = (id: string, offset = 20) => {
+  const element = document.getElementById(id);
+  if (element) {
+    const elementRect = element.getBoundingClientRect();
+    const elementTop = elementRect.top + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: elementTop,
+      behavior: "smooth",
+    });
+  }
+};
+
+export const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};

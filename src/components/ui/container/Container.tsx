@@ -5,7 +5,7 @@ export const Container = ({ children = null, className = "" }) => {
     margin: 0 auto;
     width: 100%;
     max-width: 1268px;
-    padding: 0 10px;
+    padding: 0 20px;
   `;
 
   return <Container className={className}>{children}</Container>;

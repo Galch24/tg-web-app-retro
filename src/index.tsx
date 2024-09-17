@@ -10,6 +10,9 @@ import Main from "@/pages/Main";
 import { AboutLazy } from "@/pages/about/About.async";
 import { Suspense } from "react";
 import NotFound from "@/pages/notFound";
+import {AppRoutes} from "@/pages/AppRoutes";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
 
 const root = document.getElementById("root");
 
@@ -49,9 +52,11 @@ const router = createHashRouter([
 
 container.render(
   <HelmetProvider>
-    <ThemeProvider theme={theme}>
-      <Global />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Global />
+        <AppRoutes />
+      </ThemeProvider>
+    </Provider>
   </HelmetProvider>,
 );

@@ -3,23 +3,30 @@ import {mainDomen} from "@/shared/config/env";
 interface INav {
   label: string;
   path?: string;
-  id: number;
+  id: string;
+  offset?: number;
+  offsetMobile?: number;
 }
 
 export const navData: INav[] = [
   {
     label: "Проекты",
     path: `${mainDomen}/#projects`,
-    id: 1,
+    id: 'projects',
   },
   {
     label: "Новые проекты в этом году",
     path: `${mainDomen}/#new`,
-    id: 2,
+    id: 'new',
   },
   {
     label: "Для цеха",
     path: `${mainDomen}/#tsekh`,
-    id: 3,
+    id: 'tsekh',
+  },
+  {
+    label: "Что автоматизировали",
+    path: `${mainDomen}/#automate`,
+    id: 'automate',
   },
 ];
