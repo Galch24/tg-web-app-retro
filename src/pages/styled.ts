@@ -7,10 +7,9 @@ export const SPageContent = styled(Box)`
 `
 
 export const SButtonClose = styled(Box)`
-  backgroun-color: #fff;
-  font-size: 20px;
+  background-color: transparent;
+  font-size: 18px;
   line-height: 1.25;
-  margin-bottom: 30px;
   padding: 12px 24px;
   position: absolute;
   right: 0;

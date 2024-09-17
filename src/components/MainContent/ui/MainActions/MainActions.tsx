@@ -3,6 +3,7 @@ import {Box, Button} from "@mui/material";
 import {
   SBlockWrapper,
   SActionButton,
+  SButtonClose,
 } from "./styled";
 import catSisadmin from '@/assets/img/cat-sisadmin2.jpg';
 
@@ -13,7 +14,7 @@ type MainActionsProps = {
 }
 
 export const MainActions = ({ sectionId }: MainActionsProps) => {
-  const {tg, user} = useTelegram();
+  const {tg, user, onClose} = useTelegram();
   const [sended, setSended] = useState(false)
 
   const handleAction = useCallback(async () => {
@@ -32,9 +33,10 @@ export const MainActions = ({ sectionId }: MainActionsProps) => {
           {sended && (
             <Box sx={{ mt: 4, color: '#333' }}>
               Привет, {`${user?.username}`}
-              <Box sx={{ mt: 2 }}>
+              <Box sx={{ mt: 2, mb: 3 }}>
                 <img src={catSisadmin} alt="Привет" />
               </Box>
+              <SButtonClose variant="outlined" onClick={onClose}>Закрыть</SButtonClose>
             </Box>
           )}
         </SBlockWrapper>

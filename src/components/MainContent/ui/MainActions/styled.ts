@@ -22,3 +22,12 @@ export const SActionButton = styled(Button)`
     max-width: 100%;
   }
 `
+export const SButtonClose = styled(Button)`
+  background-color: transparent;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.25;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-color: rgba(0,0,0,.5);
+`

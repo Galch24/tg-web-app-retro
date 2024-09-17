@@ -27,7 +27,7 @@ const Main = () => {
       <title>Ретро 2024</title>
     </Helmet>
     <Layout>
-      <SPageContent sx={{ mt: 1, paddingTop: '60px', position: 'relative' }}>
+      <SPageContent sx={{ paddingTop: '60px', position: 'relative' }}>
         <Container>
           <SButtonClose onClick={onClose}>Закрыть</SButtonClose>
           <MainContent />
