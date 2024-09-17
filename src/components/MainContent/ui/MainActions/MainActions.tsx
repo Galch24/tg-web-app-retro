@@ -4,6 +4,7 @@ import {
   SBlockWrapper,
   SActionButton,
 } from "./styled";
+import catSisadmin from '@/assets/img/cat-sisadmin2.jpg';
 
 import {useTelegram} from "@/hooks/useTelegram";
 
@@ -25,12 +26,15 @@ export const MainActions = ({ sectionId }: MainActionsProps) => {
 
   return (
     <section id={sectionId}>
-      <Box sx={{ paddingTop: 3 }}>
+      <Box>
         <SBlockWrapper>
           <SActionButton onClick={handleAction}>Передать привет Dev Unit</SActionButton>
           {sended && (
             <Box sx={{ mt: 4, color: '#333' }}>
-              Привет, {`${user}`}
+              Привет, {`${user?.username}`}
+              <Box sx={{ mt: 2 }}>
+                <img src={catSisadmin} alt="Привет" />
+              </Box>
             </Box>
           )}
         </SBlockWrapper>
