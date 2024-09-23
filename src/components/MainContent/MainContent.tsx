@@ -19,6 +19,7 @@ export const MainContent = () => {
   const { windowWidth } = useWindowSize();
   const main = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
   const [activeSlide, setActiveSlide] = useState<number>(0);
 
   return (
