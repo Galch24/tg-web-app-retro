@@ -1,183 +1,276 @@
-import React, {useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box } from "@mui/material";
 import {
   SBlockWrapper,
   SContentWrapper,
+  ListWrapper,
 } from "@/components/MainContent/styled";
 
 import gsap from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { useGSAP } from "@gsap/react";
-import {useWindowSize} from "@/hooks/useWindowSize";
-import {MainActions} from "@/components/MainContent/ui/MainActions";
+import { MainActions } from "@/components/MainContent/ui/MainActions";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP);
+gsap.registerPlugin(ScrollTrigger);
+
+const data = [
+  {
+    title: "",
+    id: "dev",
+    list: [
+      {
+        marker: false,
+        children: [
+          <span>
+            Средняя рента команды <strong>за 2024 год</strong>
+          </span>,
+          <span>Увеличили выручку с начала года</span>,
+          <span>Сократили кол-во урезанных часов</span>,
+        ],
+      },
+      {
+        marker: false,
+        children: [
+          <span>
+            <strong>63%</strong>
+          </span>,
+          <span>
+            <strong>в 2 раза</strong>
+          </span>,
+          <span>
+            <strong>на 80%</strong>
+          </span>,
+        ],
+      },
+    ],
+  },
+  {
+    title: "Проекты:",
+    id: "projects",
+    list: [
+      {
+        marker: true,
+        children: [
+          <span>
+            Яндекс HR /360 /Финтех/ вёрстка баннеров, писем, вики страниц,
+            лендингов
+          </span>,
+          <span>МТС /Сайты Membrana и Cosmos</span>,
+          <span>Т-Банк/ вёрстка баннеров и ХУД для CS:GO</span>,
+          <span>Уралсиб/ вёрстка писем и баннеров</span>,
+          <span>Достависта/ вёрстка писем и баннеров</span>,
+          <span>ЯндексМаркет</span>,
+        ],
+      },
+    ],
+  },
+  {
+    title: "Новые проекты в этом году:",
+    id: "new",
+    list: [
+      {
+        marker: true,
+        children: [
+          <span>
+            Оптика 3Z/ разработка интернет-магазина на PHP, React и Bitrix24
+          </span>,
+          <span>МегаМаркет/ вёрстка писем и баннеров</span>,
+          <span>Яндекс Драйв/ вёрстка лендингов</span>,
+          <span>
+            МТС HR TTC/ личный кабинет с авторизацией через смс и игровой
+            механикой
+          </span>,
+          <span>
+            Wildberries/ вёрстка многостраничного сайта с интеграцией форм
+          </span>,
+          <span>
+            Lighthause/ вёрстка многостраничного сайта c подключением
+            безголовной CMS
+          </span>,
+          <span>
+            СберМаркет (Купер)/ вёрстка формы регистрации через смс с созданием
+            базы данных
+          </span>,
+        ],
+      },
+    ],
+  },
+  {
+    title: "Для цеха:",
+    id: "tsekh",
+    list: [
+      {
+        marker: true,
+        children: [
+          <span>Микросерфис для Битрикс24</span>,
+          <span>Боты для HR и PM</span>,
+          <span>Форма и ЛК для Ai премии</span>,
+          <span>Сайт для web/dev</span>,
+        ],
+      },
+    ],
+  },
+  {
+    title: "Что автоматизировали:",
+    id: "automate",
+    list: [
+      {
+        marker: true,
+        children: [
+          <span>Развернули свой сервер в ЦЕХу</span>,
+          <span>Настроили свой гитлаб и перенесли в него все проекты</span>,
+          <span>
+            Сделали бот, показывающий обновления в работе в ветках гитлаб
+          </span>,
+          <span>Собрали webpack, для ускорения работы над сайтами</span>,
+          <span>Собрали шаблон для баннеров</span>,
+          <span>
+            Настроили свой шлюз для отправки смс кодов при регистрации
+          </span>,
+          <span>Создали свою базу знаний</span>,
+        ],
+      },
+    ],
+  },
+];
 
 export const MainContent = () => {
-  const { windowWidth } = useWindowSize();
   const main = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
 
-  const [activeSlide, setActiveSlide] = useState<number>(0);
+  useEffect(() => {
+    const sections = gsap.utils.toArray(".section");
+
+    sections.forEach((section: HTMLElement, index) => {
+      const directionX = index % 2 === 0 ? -500 : 500;
+      gsap.fromTo(
+        section,
+        {
+          x: directionX,
+          opacity: 0,
+          scale: 0.5,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "sine.in",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 75%",
+            end: "top 40%",
+            scrub: true,
+            pin: true,
+            onEnter: () => {
+              const listItems = section.querySelectorAll("li");
+              listItems.forEach((item, index) => {
+                gsap.fromTo(
+                  item,
+                  { opacity: 0, y: 30 },
+                  {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.4,
+                    delay: index * 0.3,
+                  },
+                );
+              });
+            },
+          },
+        },
+      );
+    });
+
+    gsap.fromTo(
+      ".hero h2",
+      { rotate: 0, y: 0, color: "#fff" },
+      {
+        rotate: 360,
+        y: 815,
+        x: 24,
+        ease: "linear",
+        color: "#141aff",
+        fontSize: "24px",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      },
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   return (
-    <Box ref={main} sx={{ width: '100%' }}>
-      <section id="dev">
-        <div>
+    <Box ref={main} sx={{ width: "100%" }}>
+      <div
+        className={"hero"}
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          textTransform: "uppercase",
+        }}
+      >
+        <h2
+          style={{
+            color: "#fff",
+            fontSize: "90px",
+            position: "absolute",
+            zIndex: "9",
+            textAlign: "left",
+          }}
+        >
+          Dev Unit
+        </h2>
+      </div>
+      {data.map(section => (
+        <section id={section.id} key={section.id} className='section'>
           <SBlockWrapper>
             <SContentWrapper>
-              <h2>Dev Unit:</h2>
-              <table>
-                <tbody>
-                <tr>
-                  <td>
-                    Средняя рента команды <strong>за 2024 год</strong>
-                  </td>
-                  <td>
-                    63%
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Увеличили выручку с начала года
-                  </td>
-                  <td>
-                    в 2 раза
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Сократили кол-во урезанных часов
-                  </td>
-                  <td>
-                    на 80%
-                  </td>
-                </tr>
-                </tbody>
-              </table>
+              <h2>{section?.title}</h2>
+              <ListWrapper>
+                {section.list.map((listItem, listIndex) => (
+                  <ul key={listIndex}>
+                    {listItem.children.map((child, index) => (
+                      <li
+                        key={index}
+                        style={{
+                          paddingLeft: listItem.marker ? "20px" : "0",
+                          position: "relative",
+                          marginBottom: "16px",
+                        }}
+                      >
+                        {child}
+                        {listItem.marker && (
+                          <span
+                            style={{
+                              content: "''",
+                              display: "block",
+                              position: "absolute",
+                              left: "0",
+                              top: "0.05em",
+                              marginRight: "5px",
+                            }}
+                          >
+                            -
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ))}
+              </ListWrapper>
             </SContentWrapper>
           </SBlockWrapper>
-        </div>
-      </section>
-      <section id="projects">
-        <div>
-          <SBlockWrapper>
-            <SContentWrapper>
-              <h2>Проекты:</h2>
-              <ul>
-                <li>
-                  Яндекс HR /360 /Финтех/ вёрстка баннеров, писем,вики страниц, лендингов
-                </li>
-                <li>
-                  МТС /Сайты Membrana и Cosmos
-                </li>
-                <li>
-                  Т- Банк/ вёрстка баннеров и ХУД для CS:GO
-                </li>
-                <li>
-                  Уралсиб/ вёрстка писем и баннеров
-                </li>
-                <li>
-                  Достависта/ вёрстка писем и баннеров
-                </li>
-                <li>
-                  ЯндексМаркет
-                </li>
-              </ul>
-            </SContentWrapper>
-          </SBlockWrapper>
-        </div>
-      </section>
-      <section id="new">
-        <div>
-          <SBlockWrapper>
-            <SContentWrapper>
-              <h2>Новые проекты в этом году:</h2>
-              <ul>
-                <li>
-                  Оптика 3Z/ разработка интернет-магазина на PHP, React и Bitrix24
-                </li>
-                <li>
-                  МегаМаркет/ вёрстка писем и баннеров
-                </li>
-                <li>
-                  Яндекс Драйв/ вёрстка лендингов
-                </li>
-                <li>
-                  МТС HR TTC/ личный кабинет с авторизацией через смс и игровой механикой
-                </li>
-                <li>
-                  Wildberries/ вёрстка многостраничного сайта с интеграцией форм
-                </li>
-                <li>
-                  Lighthause/ вёрстка многостраничного сайта c подключением безголовной CMS
-                </li>
-                <li>
-                  СберМаркет (Купер)/ вёрстка формы регистрации через смс с созданием базы данных
-                </li>
-              </ul>
-            </SContentWrapper>
-          </SBlockWrapper>
-        </div>
-      </section>
-      <section id="tsekh">
-        <div>
-          <SBlockWrapper >
-            <SContentWrapper>
-              <h2>Для цеха:</h2>
-              <ul>
-                <li>
-                  Микросерфис для Битрикс24
-                </li>
-                <li>
-                  Боты для HR и PM
-                </li>
-                <li>
-                  Форма и ЛК для Ai премии
-                </li>
-                <li>
-                  Сайт для web/dev
-                </li>
-              </ul>
-            </SContentWrapper>
-          </SBlockWrapper>
-        </div>
-      </section>
-      <section id="automate">
-        <div>
-          <SBlockWrapper>
-            <SContentWrapper>
-              <h2>Что автоматизировали:</h2>
-              <ul>
-                <li>
-                  Развернули свой сервер в ЦЕХу
-                </li>
-                <li>
-                  Настроили свой гитлаб и перенесли в него все проекты
-                </li>
-                <li>
-                  Сделали бот, показывающий обновления в работе в ветках гитлаб
-                </li>
-                <li>
-                  Собрали webpack, для ускорения работы над сайтами
-                </li>
-                <li>
-                  Собрали шаблон для баннеров
-                </li>
-                <li>
-                  Настроили свой шлюз для отправки смс кодов при регистрации
-                </li>
-                <li>
-                  Создали свою базу знаний
-                </li>
-              </ul>
-            </SContentWrapper>
-          </SBlockWrapper>
-        </div>
-      </section>
-      <MainActions sectionId={'mainActions'} />
+        </section>
+      ))}
+      <MainActions sectionId={"mainActions"} />
     </Box>
   );
 };
