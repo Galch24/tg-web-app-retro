@@ -22,7 +22,7 @@ const HeaderBlock = styled.header`
   left: 50%;
   transform: translateX(-50%);
   z-index: 12;
-  max-width: 1262px;
+  max-width: 1240px;
   border-radius: 30px;
   width: calc(100% - 40px);
 `;
@@ -30,10 +30,10 @@ const HeaderBlock = styled.header`
 const HeaderWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding: 15px 30px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
   z-index: 10;
 `;
 
@@ -131,9 +131,7 @@ const Header = () => {
       <HeaderBlock>
         <HeaderWrapper>
           <HeaderWrapperLeft>
-            <Link to='/'>
-              <Logo />
-            </Link>
+            <Logo />
           </HeaderWrapperLeft>
           <HeaderWrapperRight>
             {/*{windowWidth >= 1200 && <Nav />}*/}
