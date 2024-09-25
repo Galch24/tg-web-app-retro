@@ -21,8 +21,8 @@ export const SButtonClose = styled(Box)`
   color: #000;
   border-radius: 30px;
   font-size: 18px;
-  line-height: 1.25;
-  padding: 12px 24px;
+  line-height: 120%;
+  padding: 8px 18px;
   cursor: pointer;
   z-index: 7;
 `;
