@@ -180,14 +180,13 @@ export const MainContent = () => {
         },
       );
     });
-
     gsap.fromTo(
       ".hero h2",
       { rotate: 0, y: 0, color: "#fff" },
       {
         rotate: 360,
-        y: 815,
-        x: 24,
+        y: "90vh",
+        x: 32,
         ease: "linear",
         color: "#141aff",
         fontSize: "24px",
