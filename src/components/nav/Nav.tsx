@@ -5,18 +5,21 @@ import { theme, media } from "@/assets/styles/Theme";
 import { navData } from "@/data/nav";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "@/store/slices/mobileMenuSlice";
-import {useWindowSize} from "@/hooks/useWindowSize";
+import { useWindowSize } from "@/hooks/useWindowSize";
 import { useSearchParams } from "react-router-dom";
-import {getQueryParams, scrollToBlock} from "@/shared/lib/utils";
+import { getQueryParams, scrollToBlock } from "@/shared/lib/utils";
 
 export const ListStyled = styled.ul`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 48px;
   list-style: none;
+  margin-top: 160px;
 
   ${media.tablet} {
     flex-direction: row;
+    margin: 0;
   }
 `;
 
@@ -25,22 +28,19 @@ export const ItemStyled = styled.li`
   list-style: none;
 `;
 
-export const LinkStyled = styled('a')`
+export const LinkStyled = styled("a")`
   color: ${theme.palette.common.white};
   font-size: 18px;
 `;
 
 type NavProps = {
-  onNavClick?: () => void
-}
+  onNavClick?: () => void;
+};
 
 const Nav = ({ onNavClick }: NavProps) => {
-  const dispatch = useDispatch()
-  const { windowWidth, desktopWidth } = useWindowSize()
-  const [searchParams] = useSearchParams()
-  const query = getQueryParams()
-  const pathname = window.location.hash ? window.location.hash.replace('#', '') : '/'
-  const isMainPage = pathname === "/"
+  const dispatch = useDispatch();
+  const { windowWidth, desktopWidth } = useWindowSize();
+
   return (
     <ListStyled>
       {navData.map(link => (
@@ -49,21 +49,7 @@ const Nav = ({ onNavClick }: NavProps) => {
             href={`#${link.id}`}
             onClick={() => {
               dispatch(toggleMenu());
-
-              const offset = desktopWidth
-                ? link.offset !== undefined
-                  ? link.offset
-                  : 20
-                : link.offsetMobile !== undefined
-                  ? link.offsetMobile
-                  : 60;
-
-              if (isMainPage) {
-                scrollToBlock(`block-${link.id}`, offset);
-              } else {
-                // router.push(`/`);
-              }
-              onNavClick()
+              scrollToBlock(`block-${link.id}`, 20);
             }}
           >
             {link.label}

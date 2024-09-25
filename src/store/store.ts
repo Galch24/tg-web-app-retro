@@ -6,3 +6,5 @@ export const store = configureStore({
     mobileMenu: mobileMenuReducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;

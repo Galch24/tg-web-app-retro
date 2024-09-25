@@ -6,37 +6,40 @@ import Nav from "@/components/nav/Nav";
 import { Logo } from "@/components/logo/Logo";
 
 import { useWindowSize } from "@/hooks/useWindowSize";
-import {
-  media,
-  theme
-} from "@/assets/styles/Theme";
-import { mainDomen } from "@/shared/config/env";
+import { media, theme } from "@/assets/styles/Theme";
+import { toggleMenu } from "@/store/slices/mobileMenuSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import { SButtonClose } from "@/pages/styled";
+import { useTelegram } from "@/hooks/useTelegram";
 
 const { palette } = theme;
 
 const HeaderBlock = styled.header`
-  padding: 16px 0;
   background: ${palette.common.black};
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  max-width: 1262px;
+  border-radius: 30px;
+  width: calc(100% - 40px);
 `;
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  max-width: 1262px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-content: center;
-  
-  
-  @media (min-width: 1200px) {
-    padding: 0;
-  }
+  z-index: 10;
 `;
 
 const HeaderWrapperLeft = styled.div`
   display: flex;
-  
+
   a {
     display: flex;
     align-items: center;
@@ -71,6 +74,7 @@ const Burger = styled.button<BurgerProps>`
     height: 1px;
     display: block;
     background: ${palette.common.white};
+    transition: 0.4s ease;
   }
 
   &::after {
@@ -93,34 +97,38 @@ const Burger = styled.button<BurgerProps>`
   `}
 `;
 
-const BurgerMenu = styled.div<BurgerProps>`
+const BurgerMenu = styled.div<{ isActive: boolean }>`
   position: fixed;
-  top: 65px;
+  top: 0;
   right: 0;
-  height: 0;
   width: 100%;
+  height: 0;
   overflow-x: hidden;
-  padding: 20px;
+  padding: 0 50px;
   z-index: 10;
   background: ${theme.palette.common.black};
 
   ${({ isActive }) =>
     isActive &&
     `
-   height: 100%;
+    height:100vh;
   `}
 `;
 
 const Header = () => {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const { mobileWidth, windowWidth } = useWindowSize();
+  // const { mobileWidth, windowWidth } = useWindowSize();
+  // const dispatch = useDispatch();
+  // const { isOpen } = useSelector((state: RootState) => state.mobileMenu);
+  //
+  // const toggleMobileNav = () => {
+  //   dispatch(toggleMenu());
+  // };
 
-  const toggleMobileNav = () => {
-    setIsMobileNavOpen(!isMobileNavOpen);
-  };
+  const { onClose } = useTelegram();
 
   return (
-    <HeaderBlock>
+    <>
+      <HeaderBlock>
         <HeaderWrapper>
           <HeaderWrapperLeft>
             <Link to='/'>
@@ -128,18 +136,20 @@ const Header = () => {
             </Link>
           </HeaderWrapperLeft>
           <HeaderWrapperRight>
-            {windowWidth >= 1200 && <Nav />}
-            {windowWidth <= 1200 && (
-              <Burger onClick={toggleMobileNav} isActive={isMobileNavOpen} />
-            )}
+            {/*{windowWidth >= 1200 && <Nav />}*/}
+            {/*{windowWidth <= 1200 && (*/}
+            {/*  <Burger onClick={toggleMobileNav} isActive={isOpen} />*/}
+            {/*)}*/}
+            <SButtonClose onClick={onClose}>Закрыть</SButtonClose>
           </HeaderWrapperRight>
         </HeaderWrapper>
-      {isMobileNavOpen && windowWidth <= 1200 && (
-        <BurgerMenu isActive={isMobileNavOpen}>
-          <Nav onNavClick={toggleMobileNav} />
-        </BurgerMenu>
-      )}
-    </HeaderBlock>
+      </HeaderBlock>
+      {/*{isOpen && windowWidth <= 1200 && (*/}
+      {/*  <BurgerMenu isActive={isOpen}>*/}
+      {/*    <Nav onNavClick={toggleMobileNav} />*/}
+      {/*  </BurgerMenu>*/}
+      {/*)}*/}
+    </>
   );
 };
 
