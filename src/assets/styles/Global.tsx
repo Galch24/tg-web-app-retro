@@ -40,8 +40,8 @@ export const Global = () => (
           height: "100%",
           fontFamily: "'Manrope', sans-serif",
           overflowX: "hidden",
-          background: "#fff",
-          color: "#000",
+          background: "#000",
+          color: "#fff",
           scrollBehavior: "smooth",
         },
         "h1, h2, h3, h4, p": {

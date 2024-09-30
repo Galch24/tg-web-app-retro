@@ -1,18 +1,16 @@
 import { createRoot } from "react-dom/client";
-import { App } from "./App";
-import { createHashRouter, Navigate, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { HelmetProvider } from "react-helmet-async";
 import { Global } from "@/assets/styles/Global";
 import { theme } from "@/assets/styles/Theme";
 import Main from "@/pages/Main";
-import { AboutLazy } from "@/pages/about/About.async";
-import { Suspense } from "react";
-import NotFound from "@/pages/notFound";
-import {AppRoutes} from "@/pages/AppRoutes";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
+import { Team } from "@/pages/team";
+import { Stats } from "@/pages/stats";
+import { Cases } from "@/pages/cases";
+import { App } from "./App";
 
 const root = document.getElementById("root");
 
@@ -21,6 +19,7 @@ if (!root) {
 }
 
 const container = createRoot(root);
+
 const router = createHashRouter([
   {
     path: "/",
@@ -31,20 +30,16 @@ const router = createHashRouter([
         element: <Main />,
       },
       {
-        path: "/about",
-        element: (
-          <Suspense fallback={""}>
-            <AboutLazy />
-          </Suspense>
-        ),
+        path: "/team",
+        element: <Team />,
       },
       {
-        path: "/404",
-        element: <NotFound />,
+        path: "/stats",
+        element: <Stats />,
       },
       {
-        path: "*",
-        element: <Navigate to='/404' />,
+        path: "/cases",
+        element: <Cases />,
       },
     ],
   },
@@ -55,7 +50,7 @@ container.render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Global />
-        <AppRoutes />
+        <RouterProvider router={router} />
       </ThemeProvider>
     </Provider>
   </HelmetProvider>,
