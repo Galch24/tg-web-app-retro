@@ -1,5 +1,4 @@
 import { createRoot } from "react-dom/client";
-import { createHashRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { HelmetProvider } from "react-helmet-async";
 import { Global } from "@/assets/styles/Global";
@@ -11,6 +10,7 @@ import { Team } from "@/pages/team";
 import { Stats } from "@/pages/stats";
 import { Cases } from "@/pages/cases";
 import { App } from "./App";
+import { AppRoutes } from "@/pages/AppRoutes";
 
 const root = document.getElementById("root");
 
@@ -20,37 +20,38 @@ if (!root) {
 
 const container = createRoot(root);
 
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Main />,
-      },
-      {
-        path: "/team",
-        element: <Team />,
-      },
-      {
-        path: "/stats",
-        element: <Stats />,
-      },
-      {
-        path: "/cases",
-        element: <Cases />,
-      },
-    ],
-  },
-]);
+// const router = createHashRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     children: [
+//       {
+//         path: "/",
+//         element: <Main />,
+//       },
+//       {
+//         path: "/team",
+//         element: <Team />,
+//       },
+//       {
+//         path: "/stats",
+//         element: <Stats />,
+//       },
+//       {
+//         path: "/cases",
+//         element: <Cases />,
+//       },
+//     ],
+//   },
+// ]);
 
 container.render(
   <HelmetProvider>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Global />
-        <RouterProvider router={router} />
+        <AppRoutes />
+        {/*<RouterProvider router={router} />*/}
       </ThemeProvider>
     </Provider>
   </HelmetProvider>,

@@ -6,6 +6,7 @@ import { NavBar } from "@/components/NavBar/NavBar";
 
 interface IProps {
   children: ReactNode;
+  showNavBar?: boolean;
 }
 
 const MainWrapper = styled.div`
@@ -13,13 +14,13 @@ const MainWrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Layout: FC<IProps> = ({ children }) => {
+const Layout: FC<IProps> = ({ children, showNavBar = true }) => {
   return (
     <>
       {/*<Header />*/}
       <MainWrapper>{children}</MainWrapper>
       {/*<Footer />*/}
-      <NavBar />
+      {showNavBar && <NavBar />}
     </>
   );
 };
