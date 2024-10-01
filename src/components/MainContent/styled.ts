@@ -1,10 +1,10 @@
 import { styled, Box } from "@mui/material";
 
 export const SBlockWrapper = styled("div")`
-  height: 100vh;
+  height: calc(100vh - 140px);
   color: #333;
   font-weight: 400;
-  margin-bottom: 40px;
+  margin-bottom: 140px;
   border-radius: 30px;
   //padding: 24px;
   overflow: hidden;

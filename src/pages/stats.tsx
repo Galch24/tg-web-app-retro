@@ -7,7 +7,7 @@ import { MainContent } from "@/components/MainContent";
 export const Stats = () => {
   return (
     <Layout>
-      <SPageContent sx={{ paddingTop: "100px", position: "relative" }}>
+      <SPageContent sx={{ position: "relative" }}>
         <Container>
           <MainContent />
         </Container>

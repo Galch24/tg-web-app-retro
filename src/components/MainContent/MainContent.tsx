@@ -9,7 +9,6 @@ import {
 import gsap from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MainActions } from "@/components/MainContent/ui/MainActions";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -158,11 +157,11 @@ export const MainContent = () => {
           opacity: 1,
           scale: 1,
           duration: 1,
-          ease: "sine.in",
+          ease: "power1.inOut",
           scrollTrigger: {
             trigger: section,
-            start: "top 75%",
-            end: "top 40%",
+            start: "top 38%",
+            end: "top 25%",
             scrub: true,
             pin: true,
             onEnter: () => {
@@ -189,7 +188,7 @@ export const MainContent = () => {
       { rotate: 0, y: 0, color: "#fff" },
       {
         rotate: 360,
-        y: "90vh",
+        y: "68vh",
         x: 32,
         ease: "linear",
         color: "#141aff",
@@ -209,7 +208,7 @@ export const MainContent = () => {
   }, []);
 
   return (
-    <Box ref={main} sx={{ width: "100%" }}>
+    <Box ref={main} sx={{ width: "100%", marginBottom: "80px" }}>
       <div
         className={"hero"}
         style={{
@@ -273,7 +272,6 @@ export const MainContent = () => {
           </SBlockWrapper>
         </section>
       ))}
-      <MainActions sectionId={"mainActions"} />
     </Box>
   );
 };

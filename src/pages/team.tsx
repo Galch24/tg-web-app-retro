@@ -15,11 +15,15 @@ import team5slide2 from "@/assets/img/team/5/slide2/2.mp4";
 import team6 from "@/assets/img/team/6/photo.png";
 import team7 from "@/assets/img/team/7/photo.png";
 import team8 from "@/assets/img/team/8/photo.png";
+
+import teamImg from "@/assets/img/team/team.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { MainActions } from "@/components/MainContent/ui/MainActions";
 
 import "swiper/swiper-bundle.css";
 import "@/assets/styles/swiper.css";
+import { Container } from "@/components/ui";
 
 interface Slide {
   text: string;
@@ -366,10 +370,26 @@ const SlideInfoItem = styled("div")`
   }
 `;
 
+const Wrapper = styled("div")`
+  margin-top: 60px;
+
+  h4 {
+    font-size: 28px;
+    line-height: 120%;
+    margin-bottom: 20px;
+  }
+
+  img {
+    border-radius: 30px;
+    width: 100%;
+    height: auto;
+  }
+`;
+
 export const Team = () => {
   const [open, setOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]); // Массив ссылок на видео
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const handleClickOpen = (member: TeamMember) => {
     setSelectedMember(member);
@@ -523,6 +543,15 @@ export const Team = () => {
             )}
           </DialogContent>
         </Dialog>
+
+        <Container>
+          <Wrapper>
+            <h4>DEV CLAN</h4>
+            <img src={teamImg} alt={"команда"} />
+
+            <MainActions sectionId={"mainActions"} />
+          </Wrapper>
+        </Container>
       </Block>
     </Layout>
   );

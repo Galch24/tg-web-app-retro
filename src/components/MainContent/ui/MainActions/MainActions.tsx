@@ -37,19 +37,18 @@ export const MainActions = ({ sectionId }: MainActionsProps) => {
   }, []);
 
   return (
-    <section id={sectionId}>
+    <section id={sectionId} style={{ marginTop: "60px" }}>
       <Box>
         <SBlockWrapper>
           <SActionButton onClick={onSendData}>
-            Передать привет Dev Unit
+            Передать нам привет
           </SActionButton>
           {sended && (
-            <Box sx={{ mt: 4, color: "#333" }}>
+            <Box sx={{ mt: 4, color: "#fff" }}>
               Привет, {`${user?.username}`}
-              <Box sx={{ mt: 2, mb: 3 }}>
-                <img src={catSisadmin} alt='Привет' />
-              </Box>
-              {/*<SButtonClose variant="outlined" onClick={onClose}>Закрыть</SButtonClose>*/}
+              {/*<Box sx={{ mt: 2, mb: 3 }}>*/}
+              {/*  <img src={catSisadmin} alt='Привет' />*/}
+              {/*</Box>*/}
             </Box>
           )}
         </SBlockWrapper>
