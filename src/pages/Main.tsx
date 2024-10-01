@@ -30,7 +30,7 @@ const VideoWrapper = styled("div")`
   video {
     margin-left: 40px;
     object-fit: cover;
-    height: 300px;
+    height: 250px;
   }
 `;
 
@@ -42,7 +42,7 @@ const List = styled("ul")`
 
 const Item = styled("ul")`
   quotes: "«" "»" "‹" "›";
-  font-size: 32px;
+  font-size: 28px;
 `;
 
 const MuteButton = styled("button")`
@@ -66,24 +66,6 @@ const Main = () => {
   const [showNavBar, setShowNavBar] = useState(false);
   const audioRef = useRef(null);
   const blockRef = useRef(null);
-
-  const videoElement = useMemo(
-    () => (
-      <video autoPlay loop={true} controls={false}>
-        <source src={videoAlien} />
-      </video>
-    ),
-    [],
-  );
-
-  const audioElement = useMemo(
-    () => (
-      <audio ref={audioRef} autoPlay loop muted={mute}>
-        <source src={sound} type='audio/mp3' />
-      </audio>
-    ),
-    [mute],
-  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -120,8 +102,14 @@ const Main = () => {
             {mute ? <VolumeOffOutlinedIcon /> : <VolumeUpOutlinedIcon />}
           </MuteButton>
           <Container>
-            <VideoWrapper>{videoElement}</VideoWrapper>
-            {audioElement}
+            <VideoWrapper>
+              <video autoPlay loop={true} controls={false}>
+                <source src={videoAlien} />
+              </video>
+            </VideoWrapper>
+            <audio ref={audioRef} autoPlay loop muted={mute}>
+              <source src={sound} type='audio/mp3' />
+            </audio>
             <List>
               {quotes.map((item, index) => (
                 <Item key={index}>
