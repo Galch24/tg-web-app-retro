@@ -7,6 +7,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import VolumeUpOutlinedIcon from "@mui/icons-material/VolumeUpOutlined";
 import VolumeOffOutlinedIcon from "@mui/icons-material/VolumeOffOutlined";
 
+import videoAlien from "@/assets/video/alien.mp4";
+import sound from "@/assets/sound/sound.mp3";
+
 const quotes = [
   "Прод — это когда все работает, но" + " никто не знает, почему.",
   "Дедлайны — это просто рекомендованные даты.",
@@ -59,26 +62,24 @@ const MuteButton = styled("button")`
 `;
 
 const Main = () => {
-  const [mute, setMute] = useState(false);
+  const [mute, setMute] = useState(true);
   const [showNavBar, setShowNavBar] = useState(false);
   const audioRef = useRef(null);
   const blockRef = useRef(null);
 
-  // Мемоизация видео
   const videoElement = useMemo(
     () => (
       <video autoPlay loop={true} controls={false}>
-        <source src={"/alien.mp4"} />
+        <source src={videoAlien} />
       </video>
     ),
     [],
   );
 
-  // Мемоизация аудио
   const audioElement = useMemo(
     () => (
       <audio ref={audioRef} autoPlay loop muted={mute}>
-        <source src={"/sound.mp3"} type='audio/mp3' />
+        <source src={sound} type='audio/mp3' />
       </audio>
     ),
     [mute],
