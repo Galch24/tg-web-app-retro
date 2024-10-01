@@ -86,9 +86,6 @@ const Main = () => {
 
   const handleMuteClick = () => {
     setMute(prevMute => !prevMute);
-    if (audioRef.current) {
-      audioRef.current.muted = !audioRef.current.muted;
-    }
   };
 
   return (
@@ -103,7 +100,12 @@ const Main = () => {
           </MuteButton>
           <Container>
             <VideoWrapper>
-              <video autoPlay loop={true} controls={false}>
+              <video
+                autoPlay
+                loop={true}
+                controls={false}
+                style={{ width: "100%", height: "100%" }}
+              >
                 <source src={videoAlien} />
               </video>
             </VideoWrapper>

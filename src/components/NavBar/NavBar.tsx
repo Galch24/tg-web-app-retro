@@ -17,6 +17,7 @@ const FixedNavBar = styled(BottomNavigation)`
   z-index: 1000;
   border-radius: 30px 30px 0 0;
   padding: 40px 0;
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const NavBar = () => {
