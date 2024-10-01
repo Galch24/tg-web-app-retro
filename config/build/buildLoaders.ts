@@ -74,7 +74,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   };
 
   const fileLoader = {
-    test: /\.(mp4|webm|ogg|ttf|woff|woff2)$/,
+    test: /\.(mp4|webm|ogg|ttf|woff|woff2|mp3|)$/,
     use: {
       loader: "file-loader",
       options: {
