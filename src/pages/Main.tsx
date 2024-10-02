@@ -32,18 +32,26 @@ const quotes = [
 ];
 
 const Main = () => {
-  const [mute, setMute] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [showNavBar, setShowNavBar] = useState(false);
-  const audioRef = useRef(null);
-  const blockRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const blockRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const audio = audioRef.current;
+
+    if (audio) {
+      audio.volume = 0.5;
+      audio.play().catch((error: unknown) => {
+        console.error("Error playing audio:", error);
+      });
+    }
+
     const handleScroll = () => {
       const block = blockRef.current;
       if (block) {
         const blockBottom = block.getBoundingClientRect().bottom;
         const windowHeight = window.innerHeight;
-
         setShowNavBar(blockBottom < windowHeight + 50);
       }
     };
@@ -54,8 +62,17 @@ const Main = () => {
     };
   }, []);
 
-  const handleMuteClick = () => {
-    setMute(prevMute => !prevMute);
+  const handleAudioToggle = () => {
+    const audio = audioRef.current;
+
+    if (isPlaying) {
+      audio?.pause();
+    } else {
+      audio?.play().catch((error: unknown) => {
+        console.error("Error playing audio:", error);
+      });
+    }
+    setIsPlaying(prevIsPlaying => !prevIsPlaying);
   };
 
   return (
@@ -65,8 +82,8 @@ const Main = () => {
       </Helmet>
       <Layout showNavBar={showNavBar}>
         <Block id='block' ref={blockRef}>
-          <MuteButton onClick={handleMuteClick}>
-            {mute ? <VolumeOffOutlinedIcon /> : <VolumeUpOutlinedIcon />}
+          <MuteButton onClick={handleAudioToggle}>
+            {isPlaying ? <VolumeOffOutlinedIcon /> : <VolumeUpOutlinedIcon />}
           </MuteButton>
           <Hero>
             <Container>
@@ -75,15 +92,6 @@ const Main = () => {
               </h1>
               <VideoWrapper>
                 <img src={alien} alt={"флекс"} />
-                {/*<video*/}
-                {/*  autoPlay={true}*/}
-                {/*  loop={true}*/}
-                {/*  controls={false}*/}
-                {/*  preload='auto'*/}
-                {/*>*/}
-                {/*  <source src={videoAlienWebm} type='video/webm' />*/}
-                {/*  <source src={videoAlien} type='video/mp4' />*/}
-                {/*</video>*/}
               </VideoWrapper>
 
               <ArrowIcon>
@@ -104,13 +112,7 @@ const Main = () => {
             </QuotesBlock>
           </Container>
 
-          <audio
-            ref={audioRef}
-            autoPlay={true}
-            loop={true}
-            muted={mute}
-            preload='auto'
-          >
+          <audio ref={audioRef} loop>
             <source src={sound} type='audio/mp3' />
           </audio>
         </Block>
