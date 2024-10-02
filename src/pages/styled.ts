@@ -2,14 +2,14 @@ import { styled, Box } from "@mui/material";
 
 export const SPageContent = styled(Box)`
   /* background-image: linear-gradient(to right bottom, #f4fbfc, #f5fbfc, #f5fbfc, #f6fbfc, #f6fbfc);*/
-  background-image: linear-gradient(
-    to top,
-    #141aff,
-    #1a1a80,
-    #16166b,
-    #0d0d66,
-    #000000
-  );
+  //background-image: linear-gradient(
+  //  to top,
+  //  #141aff,
+  //  #1a1a80,
+  //  #16166b,
+  //  #0d0d66,
+  //  #000000
+  //);
   padding-bottom: 40px;
 `;
 
@@ -46,8 +46,13 @@ export const Hero = styled("div")`
     text-align: center;
     font-weight: 600;
     letter-spacing: 1px;
-    
-    background: linear-gradient(91deg, #FFF -16.56%, rgba(255, 255, 255, 0.90) -0.25%, rgba(255, 255, 255, 0.00) 142.87%);
+
+    background: linear-gradient(
+      91deg,
+      #fff -16.56%,
+      rgba(255, 255, 255, 0.9) -0.25%,
+      rgba(255, 255, 255, 0) 142.87%
+    );
     background-size: 100%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -96,8 +101,13 @@ export const QuotesBlock = styled("div")`
     width: 100%;
     margin-bottom: 40px;
     letter-spacing: 1.5px;
-    
-    background: linear-gradient(91deg, #FFF -16.56%, rgba(255, 255, 255, 0.90) -0.25%, rgba(255, 255, 255, 0.00) 142.87%);
+
+    background: linear-gradient(
+      91deg,
+      #fff -16.56%,
+      rgba(255, 255, 255, 0.9) -0.25%,
+      rgba(255, 255, 255, 0) 142.87%
+    );
     background-size: 100%;
     background-clip: text;
     -webkit-background-clip: text;

@@ -4,6 +4,7 @@ import {
   SBlockWrapper,
   SContentWrapper,
   ListWrapper,
+  Hero,
 } from "@/components/MainContent/styled";
 
 import gsap from "gsap";
@@ -24,23 +25,19 @@ const data = [
             <h3>
               Средняя рента команды <strong>за&nbsp;2024&nbsp;год</strong>
             </h3>
-            <div className="rent">
+            <div className='rent'>
               <strong>63%</strong>
             </div>
           </div>,
           <div>
-            <h3>
-              Увеличили выручку с&nbsp;начала&nbsp;года
-            </h3>
-            <div className="rent">
+            <h3>Увеличили выручку с&nbsp;начала&nbsp;года</h3>
+            <div className='rent'>
               <strong>в&nbsp;2&nbsp;раза</strong>
             </div>
           </div>,
           <div>
-            <h3>
-              Сократили кол-во урезанных часов
-            </h3>
-            <div className="rent">
+            <h3>Сократили кол-во урезанных часов</h3>
+            <div className='rent'>
               <strong>на&nbsp;80%</strong>
             </div>
           </div>,
@@ -121,24 +118,24 @@ export const MainContent = () => {
         },
       );
     });
-    gsap.fromTo(
-      ".hero h2",
-      { rotate: 0, y: 0, color: "#fff" },
-      {
-        rotate: 360,
-        y: "68vh",
-        x: 32,
-        ease: "linear",
-        color: "#141aff",
-        fontSize: "24px",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      },
-    );
+    // gsap.fromTo(
+    //   ".hero h2",
+    //   { rotate: 0, y: 0, color: "#fff" },
+    //   {
+    //     rotate: 360,
+    //     y: "68vh",
+    //     x: 32,
+    //     ease: "linear",
+    //     color: "#141aff",
+    //     fontSize: "24px",
+    //     scrollTrigger: {
+    //       trigger: ".hero",
+    //       start: "top top",
+    //       end: "bottom top",
+    //       scrub: true,
+    //     },
+    //   },
+    // );
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -146,34 +143,16 @@ export const MainContent = () => {
   }, []);
 
   return (
-    <Box ref={main} sx={{ width: "100%", marginBottom: "80px" }}>
-      <div
-        className={"hero"}
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "flex-start",
-          alignItems: "center",
-          textTransform: "uppercase",
-        }}
-      >
-        <h2
-          style={{
-            color: "#fff",
-            fontSize: "82px",
-            position: "absolute",
-            zIndex: "9",
-            textAlign: "left",
-          }}
-        >
-          Dev Unit
-        </h2>
-      </div>
+    <Box ref={main} sx={{ width: "100%" }}>
+      <Hero className={"hero"}>
+        <h2>Dev Unit</h2>
+      </Hero>
       {data.map(section => (
         <section id={section.id} key={section.id} className='section'>
           <SBlockWrapper>
             <SContentWrapper>
-              <h2 dangerouslySetInnerHTML={{
+              <h2
+                dangerouslySetInnerHTML={{
                   __html: `${section?.title}`,
                 }}
               />

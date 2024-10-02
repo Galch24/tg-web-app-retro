@@ -258,7 +258,7 @@ const List = styled("ul")`
   }
 `;
 
-const Item = styled("li")`
+const Item = styled("li")<{ isViewed: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -270,7 +270,11 @@ const Item = styled("li")`
     object-fit: cover;
     height: 100px;
     border-radius: 50%;
-    border: 2px solid white;
+    background: ${({ isViewed }) =>
+      isViewed
+        ? "#5b5b5b"
+        : "linear-gradient(to right, #dcfdff, #6adcf0, #00cc99)"};
+    padding: 4px;
   }
 `;
 
@@ -371,29 +375,53 @@ const SlideInfoItem = styled("div")`
 `;
 
 const Wrapper = styled("div")`
-  margin-top: 60px;
+  margin-top: 80px;
 
-  h4 {
-    font-size: 28px;
+  h3 {
+    font-size: 48px;
     line-height: 120%;
     margin-bottom: 20px;
+
+    background: linear-gradient(
+      91deg,
+      #fff -16.56%,
+      rgba(255, 255, 255, 0.9) -0.25%,
+      rgba(255, 255, 255, 0) 142.87%
+    );
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-position: top;
+    background-repeat: no-repeat;
   }
 
   img {
     border-radius: 30px;
     width: 100%;
     height: auto;
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
   }
 `;
 
 export const Team = () => {
   const [open, setOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const [viewedItems, setViewedItems] = useState<number[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const handleClickOpen = (member: TeamMember) => {
     setSelectedMember(member);
     setOpen(true);
+
+    if (!viewedItems.includes(member.id)) {
+      setViewedItems([...viewedItems, member.id]);
+    }
   };
 
   const handleClose = () => {
@@ -424,7 +452,11 @@ export const Team = () => {
       <Block>
         <List>
           {data.map(item => (
-            <Item key={item.id} onClick={() => handleClickOpen(item)}>
+            <Item
+              key={item.id}
+              onClick={() => handleClickOpen(item)}
+              isViewed={viewedItems.includes(item.id)}
+            >
               <img src={item.img} alt={item.name} />
               <Name>{item.name}</Name>
             </Item>
@@ -546,10 +578,14 @@ export const Team = () => {
 
         <Container>
           <Wrapper>
-            <h4>DEV CLAN</h4>
+            <h3>DEV CLAN</h3>
             <img src={teamImg} alt={"команда"} />
-
-            <MainActions sectionId={"mainActions"} />
+            <h4>Наш девиз: серьезно делать - это не интересно</h4>
+            <p>
+              Мы делаем работу с юмором, именно по - этому, с нами всегда легко
+              выкатывать и деплоить любые задачи.
+            </p>
+            {/*<MainActions sectionId={"mainActions"} />*/}
           </Wrapper>
         </Container>
       </Block>

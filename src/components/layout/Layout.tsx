@@ -16,12 +16,12 @@ const MainWrapper = styled.div`
 
 const Layout: FC<IProps> = ({ children, showNavBar = true }) => {
   return (
-    <>
+    <div style={{ marginBottom: "80px" }}>
       {/*<Header />*/}
       <MainWrapper>{children}</MainWrapper>
       {/*<Footer />*/}
       {showNavBar && <NavBar />}
-    </>
+    </div>
   );
 };
 

@@ -11,7 +11,7 @@ import {
   List,
   Item,
   MuteButton,
-} from './styled'
+} from "./styled";
 
 import VolumeUpOutlinedIcon from "@mui/icons-material/VolumeUpOutlined";
 import VolumeOffOutlinedIcon from "@mui/icons-material/VolumeOffOutlined";
@@ -19,6 +19,7 @@ import VolumeOffOutlinedIcon from "@mui/icons-material/VolumeOffOutlined";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 import videoAlien from "@/assets/video/alien.mp4";
+import videoAlienWebm from "@/assets/video/alien.webm";
 import sound from "@/assets/sound/sound.mp3";
 
 const quotes = [
@@ -72,8 +73,9 @@ const Main = () => {
                 DEV UNIT -<br /> спешит на помощь
               </h1>
               <VideoWrapper>
-                <video autoPlay loop={true} controls={false}>
-                  <source src={videoAlien} />
+                <video autoPlay loop={true} controls={false} preload='auto'>
+                  <source src={videoAlienWebm} type='video/webm' />
+                  <source src={videoAlien} type='video/mp4' />
                 </video>
               </VideoWrapper>
 
@@ -95,7 +97,7 @@ const Main = () => {
             </QuotesBlock>
           </Container>
 
-          <audio ref={audioRef} autoPlay loop muted={mute}>
+          <audio ref={audioRef} autoPlay loop muted={mute} preload='auto'>
             <source src={sound} type='audio/mp3' />
           </audio>
         </Block>
