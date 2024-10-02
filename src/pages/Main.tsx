@@ -32,19 +32,16 @@ const quotes = [
 ];
 
 const Main = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showTextAudio, setShowTextAudio] = useState(true);
   const [showNavBar, setShowNavBar] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const blockRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const audio = audioRef.current;
-
     if (audio) {
       audio.volume = 0.5;
-      audio.play().catch((error: unknown) => {
-        console.error("Error playing audio:", error);
-      });
     }
 
     const handleScroll = () => {
@@ -75,6 +72,22 @@ const Main = () => {
     setIsPlaying(prevIsPlaying => !prevIsPlaying);
   };
 
+  const handleInitialPlay = () => {
+    const audio = audioRef.current;
+
+    if (audio) {
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+          setShowTextAudio(false);
+        })
+        .catch((error: unknown) => {
+          console.error("Error playing audio on initial click:", error);
+        });
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -82,8 +95,11 @@ const Main = () => {
       </Helmet>
       <Layout showNavBar={showNavBar}>
         <Block id='block' ref={blockRef}>
-          <MuteButton onClick={handleAudioToggle}>
+          <MuteButton
+            onClick={isPlaying ? handleAudioToggle : handleInitialPlay}
+          >
             {isPlaying ? <VolumeOffOutlinedIcon /> : <VolumeUpOutlinedIcon />}
+            {showTextAudio && <p>Тыкни</p>}
           </MuteButton>
           <Hero>
             <Container>

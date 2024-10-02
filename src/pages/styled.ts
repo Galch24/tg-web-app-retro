@@ -145,4 +145,9 @@ export const MuteButton = styled("button")`
   justify-content: center;
   padding: 10px 15px;
   z-index: 10;
+
+  p {
+    font-size: 16px;
+    margin-left: 5px;
+  }
 `;
