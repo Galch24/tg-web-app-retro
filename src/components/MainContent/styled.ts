@@ -13,9 +13,12 @@ export const SBlockWrapper = styled("div")`
 
   h2 {
     color: #141aff;
-    font-size: 24px;
+    font-size: 28px;
     line-height: 120%;
     min-height: 30px;
+    background: linear-gradient(90deg, #5468FF 20%, #C471ED 80%, #1B1771 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `;
 
@@ -24,28 +27,35 @@ export const ListWrapper = styled("div")`
   display: flex;
   //align-items: center;
   justify-content: space-between;
-  margin-top: 24px;
-
-  ul {
-    &:nth-child(2) {
-      min-width: 80px;
-
-      > li {
-        margin-bottom: 10vw !important;
-      }
-    }
-  }
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 120%;
 
   ul > li {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     position: relative;
-    font-size: 18px;
-    line-height: 120%;
+  }
+  
+  h3 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .rent {
+    font-size: 36px;
+    line-height: 0.9;
+    margin-bottom: 48px;
+    text-align: center;
+    background: linear-gradient(90deg, #5468FF 20%, #C471ED 80%, #1B1771 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `;
 
 export const SContentWrapper = styled(Box)`
-  padding: 32px;
+  padding: 24px 32px;
   border-radius: 22px;
   background-color: #fff;
   height: 100%;

@@ -1,81 +1,85 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Box } from "@mui/material";
+import React, {useEffect, useRef} from "react";
+import Layout from "@/components/layout/Layout";
 import {
-  SBlockWrapper,
-  SContentWrapper,
   ListWrapper,
+  SBlockWrapper,
+  SContentWrapper
 } from "@/components/MainContent/styled";
-
+import {Box} from "@mui/material";
 import gsap from "gsap";
-
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 const data = [
   {
-    title: "",
-    id: "dev",
+    title: "Проекты:",
+    id: "projects",
     list: [
       {
-        marker: false,
+        marker: true,
         children: [
-          <div>
-            <h3>
-              Средняя рента команды <strong>за&nbsp;2024&nbsp;год</strong>
-            </h3>
-            <div className="rent">
-              <strong>63%</strong>
-            </div>
-          </div>,
-          <div>
-            <h3>
-              Увеличили выручку с&nbsp;начала&nbsp;года
-            </h3>
-            <div className="rent">
-              <strong>в&nbsp;2&nbsp;раза</strong>
-            </div>
-          </div>,
-          <div>
-            <h3>
-              Сократили кол-во урезанных часов
-            </h3>
-            <div className="rent">
-              <strong>на&nbsp;80%</strong>
-            </div>
-          </div>,
+          <span>
+            Яндекс HR&nbsp;/360 /Финтех/ вёрстка баннеров, писем, вики страниц,
+            лендингов
+          </span>,
+          <span>МТС /Сайты Membrana и&nbsp;Cosmos</span>,
+          <span>Т-Банк/ вёрстка баннеров и&nbsp;ХУД для&nbsp;CS:GO</span>,
+          <span>Уралсиб/ вёрстка писем и&nbsp;баннеров</span>,
+          <span>Достависта/ вёрстка писем и&nbsp;баннеров</span>,
+          <span>ЯндексМаркет</span>,
         ],
       },
     ],
   },
   {
-    title: "Что автоматизиро&shy;вали:",
-    id: "automate",
+    title: "Новые проекты в&nbsp;этом году:",
+    id: "new",
     list: [
       {
         marker: true,
         children: [
-          <span>Развернули свой сервер в&nbsp;ЦЕХу</span>,
           <span>
-            Настроили свой гитлаб и&nbsp;перенесли в&nbsp;него все проекты
+            Оптика 3Z/&nbsp;разработка интернет-магазина на&nbsp;PHP, React
+            и&nbsp;Bitrix24
+          </span>,
+          <span>МегаМаркет/ вёрстка писем и&nbsp;баннеров</span>,
+          <span>Яндекс Драйв/ вёрстка лендингов</span>,
+          <span>
+            МТС HR&nbsp;TTC/ личный кабинет с&nbsp;авторизацией через смс
+            и&nbsp;игровой механикой
           </span>,
           <span>
-            Сделали бот, показывающий обновления в&nbsp;работе в&nbsp;ветках
-            гитлаб
+            Wildberries/ вёрстка многостраничного сайта с&nbsp;интеграцией форм
           </span>,
-          <span>Собрали webpack, для ускорения работы над сайтами</span>,
-          <span>Собрали шаблон для баннеров</span>,
           <span>
-            Настроили свой шлюз для отправки смс кодов при регистрации
+            Lighthause/ вёрстка многостраничного сайта c&nbsp;подключением
+            безголовной CMS
           </span>,
-          <span>Создали свою базу знаний</span>,
+          <span>
+            СберМаркет (Купер)/ вёрстка формы регистрации через смс
+            с&nbsp;созданием базы данных
+          </span>,
+        ],
+      },
+    ],
+  },
+  {
+    title: "Для цеха:",
+    id: "tsekh",
+    list: [
+      {
+        marker: true,
+        children: [
+          <span>Микросервис для Битрикс24</span>,
+          <span>Боты для&nbsp;HR и&nbsp;PM</span>,
+          <span>Форма и&nbsp;ЛК для&nbsp;Ai премии</span>,
+          <span>Сайт для web/dev</span>,
         ],
       },
     ],
   },
 ];
 
-export const MainContent = () => {
+export const Cases = () => {
   const main = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -147,35 +151,13 @@ export const MainContent = () => {
 
   return (
     <Box ref={main} sx={{ width: "100%", marginBottom: "80px" }}>
-      <div
-        className={"hero"}
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "flex-start",
-          alignItems: "center",
-          textTransform: "uppercase",
-        }}
-      >
-        <h2
-          style={{
-            color: "#fff",
-            fontSize: "82px",
-            position: "absolute",
-            zIndex: "9",
-            textAlign: "left",
-          }}
-        >
-          Dev Unit
-        </h2>
-      </div>
       {data.map(section => (
         <section id={section.id} key={section.id} className='section'>
           <SBlockWrapper>
             <SContentWrapper>
               <h2 dangerouslySetInnerHTML={{
-                  __html: `${section?.title}`,
-                }}
+                __html: `${section?.title}`,
+              }}
               />
               <ListWrapper>
                 {section.list.map((listItem, listIndex) => (
@@ -201,8 +183,8 @@ export const MainContent = () => {
                               marginRight: "5px",
                             }}
                           >
-                            -
-                          </span>
+                              -
+                            </span>
                         )}
                       </li>
                     ))}
@@ -214,5 +196,5 @@ export const MainContent = () => {
         </section>
       ))}
     </Box>
-  );
+  )
 };
