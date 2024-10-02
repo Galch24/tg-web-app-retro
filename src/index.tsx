@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { Team } from "@/pages/team";
 import { Stats } from "@/pages/stats";
-import { Cases } from "@/pages/cases";
+import { CasesPage } from "@/pages/CasesPage";
 import { App } from "./App";
 import { AppRoutes } from "@/pages/AppRoutes";
 

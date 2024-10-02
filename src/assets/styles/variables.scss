@@ -44,3 +44,13 @@ $transition-time: 0.4s;
 $transition-ease: ease;
 
 $full-width: 1920px;
+
+@mixin headerGradient {
+  background: linear-gradient(91deg, #FFF -16.56%, rgba(255, 255, 255, 0.90) -0.25%, rgba(255, 255, 255, 0.00) 142.87%);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-position: top;
+  background-repeat: no-repeat;
+}
