@@ -73,7 +73,12 @@ const Main = () => {
                 DEV UNIT -<br /> спешит на помощь
               </h1>
               <VideoWrapper>
-                <video autoPlay loop={true} controls={false} preload='auto'>
+                <video
+                  autoPlay={true}
+                  loop={true}
+                  controls={false}
+                  preload='auto'
+                >
                   <source src={videoAlienWebm} type='video/webm' />
                   <source src={videoAlien} type='video/mp4' />
                 </video>
@@ -97,7 +102,13 @@ const Main = () => {
             </QuotesBlock>
           </Container>
 
-          <audio ref={audioRef} autoPlay loop muted={mute} preload='auto'>
+          <audio
+            ref={audioRef}
+            autoPlay={true}
+            loop={true}
+            muted={mute}
+            preload='auto'
+          >
             <source src={sound} type='audio/mp3' />
           </audio>
         </Block>
