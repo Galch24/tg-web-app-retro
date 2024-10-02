@@ -18,8 +18,9 @@ import VolumeOffOutlinedIcon from "@mui/icons-material/VolumeOffOutlined";
 
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-import videoAlien from "@/assets/video/alien.mp4";
-import videoAlienWebm from "@/assets/video/alien.webm";
+// import videoAlien from "@/assets/video/alien.mp4";
+// import videoAlienWebm from "@/assets/video/alien.webm";
+import alien from "@/assets/video/alien.gif";
 import sound from "@/assets/sound/sound.mp3";
 
 const quotes = [
@@ -73,15 +74,16 @@ const Main = () => {
                 DEV UNIT -<br /> спешит на помощь
               </h1>
               <VideoWrapper>
-                <video
-                  autoPlay={true}
-                  loop={true}
-                  controls={false}
-                  preload='auto'
-                >
-                  <source src={videoAlienWebm} type='video/webm' />
-                  <source src={videoAlien} type='video/mp4' />
-                </video>
+                <img src={alien} alt={"флекс"} />
+                {/*<video*/}
+                {/*  autoPlay={true}*/}
+                {/*  loop={true}*/}
+                {/*  controls={false}*/}
+                {/*  preload='auto'*/}
+                {/*>*/}
+                {/*  <source src={videoAlienWebm} type='video/webm' />*/}
+                {/*  <source src={videoAlien} type='video/mp4' />*/}
+                {/*</video>*/}
               </VideoWrapper>
 
               <ArrowIcon>
