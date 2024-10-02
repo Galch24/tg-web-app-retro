@@ -1,7 +1,7 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import Layout from "@/components/layout/Layout";
-import {SPageContent} from "@/pages/styled";
-import {Container} from "@/components/ui";
+import { SPageContent } from "@/pages/styled";
+import { Container } from "@/components/ui";
 import { Cases } from "@/components/Cases";
 
 export const CasesPage = () => {
@@ -13,5 +13,5 @@ export const CasesPage = () => {
         </Container>
       </SPageContent>
     </Layout>
-  )
+  );
 };

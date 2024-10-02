@@ -30,7 +30,7 @@ const container = createRoot(root);
 //         element: <Main />,
 //       },
 //       {
-//         path: "/team",
+//         path: "/team.tsx",
 //         element: <Team />,
 //       },
 //       {

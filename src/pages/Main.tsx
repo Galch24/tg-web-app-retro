@@ -18,8 +18,6 @@ import VolumeOffOutlinedIcon from "@mui/icons-material/VolumeOffOutlined";
 
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-// import videoAlien from "@/assets/video/alien.mp4";
-// import videoAlienWebm from "@/assets/video/alien.webm";
 import alien from "@/assets/video/alien.gif";
 import sound from "@/assets/sound/sound.mp3";
 
