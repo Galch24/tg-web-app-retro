@@ -85,7 +85,7 @@ export const VideoWrapper = styled("div")`
   align-items: center;
   justify-content: center;
 
-  video {
+  img {
     margin-left: 40px;
     object-fit: cover;
     width: 100%;
