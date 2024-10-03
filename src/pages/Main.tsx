@@ -11,6 +11,7 @@ import {
   List,
   Item,
   MuteButton,
+  WelcomeBlock,
 } from "./styled";
 
 import VolumeUpOutlinedIcon from "@mui/icons-material/VolumeUpOutlined";
@@ -20,6 +21,7 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 import alien from "@/assets/video/alien.gif";
 import sound from "@/assets/sound/sound.mp3";
+import { Button } from "@mui/material";
 
 const quotes = [
   "Прод — это когда все работает, но" + " никто не знает, почему.",
@@ -31,13 +33,26 @@ const quotes = [
 
 const Main = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showTextAudio, setShowTextAudio] = useState(true);
   const [showNavBar, setShowNavBar] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const blockRef = useRef<HTMLDivElement | null>(null);
+  const [start, setStart] = useState(true);
+
+  useEffect(() => {
+    if (start) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [start]);
 
   useEffect(() => {
     const audio = audioRef.current;
+
     if (audio) {
       audio.volume = 0.5;
     }
@@ -78,7 +93,6 @@ const Main = () => {
         .play()
         .then(() => {
           setIsPlaying(true);
-          setShowTextAudio(false);
         })
         .catch((error: unknown) => {
           console.error("Error playing audio on initial click:", error);
@@ -86,18 +100,27 @@ const Main = () => {
     }
   };
 
+  const handleStart = () => {
+    setStart(false);
+    handleInitialPlay();
+  };
+
   return (
     <>
       <Helmet>
         <title>Ретро 2024</title>
       </Helmet>
-      <Layout showNavBar={showNavBar}>
+      <Layout showNavBar={!start && showNavBar}>
+        {start && (
+          <WelcomeBlock>
+            <Button onClick={handleStart}>Начать</Button>
+          </WelcomeBlock>
+        )}
         <Block id='block' ref={blockRef}>
           <MuteButton
             onClick={isPlaying ? handleAudioToggle : handleInitialPlay}
           >
             {!isPlaying ? <VolumeOffOutlinedIcon /> : <VolumeUpOutlinedIcon />}
-            {showTextAudio && <p>Тыкни</p>}
           </MuteButton>
           <Hero>
             <Container>
