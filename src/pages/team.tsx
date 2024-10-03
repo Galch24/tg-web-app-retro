@@ -16,6 +16,7 @@ import { MainActions } from "@/components/MainContent/ui/MainActions";
 import "swiper/swiper-bundle.css";
 import "@/assets/styles/swiper.css";
 import { Container } from "@/components/ui";
+import { TapGame } from "@/components/TapGame/TapGame";
 
 const Block = styled("div")`
   padding: 40px 0;
@@ -367,6 +368,7 @@ export const Team = () => {
             {/*<MainActions sectionId={"mainActions"} />*/}
           </Wrapper>
         </Container>
+        <TapGame />
       </Block>
     </Layout>
   );
