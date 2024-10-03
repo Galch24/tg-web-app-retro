@@ -96,7 +96,7 @@ const Main = () => {
           <MuteButton
             onClick={isPlaying ? handleAudioToggle : handleInitialPlay}
           >
-            {isPlaying ? <VolumeOffOutlinedIcon /> : <VolumeUpOutlinedIcon />}
+            {!isPlaying ? <VolumeOffOutlinedIcon /> : <VolumeUpOutlinedIcon />}
             {showTextAudio && <p>Тыкни</p>}
           </MuteButton>
           <Hero>
