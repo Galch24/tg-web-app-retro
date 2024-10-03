@@ -1,16 +1,32 @@
 import { styled, Box } from "@mui/material";
 
 export const SPageContent = styled(Box)`
-  /* background-image: linear-gradient(to right bottom, #f4fbfc, #f5fbfc, #f5fbfc, #f6fbfc, #f6fbfc);*/
-  //background-image: linear-gradient(
-  //  to top,
-  //  #141aff,
-  //  #1a1a80,
-  //  #16166b,
-  //  #0d0d66,
-  //  #000000
-  //);
   padding-bottom: 40px;
+`;
+
+export const WelcomeBlock = styled("div")`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  button {
+    background: #141aff;
+    color: #fff;
+    width: 100%;
+    margin: 0 20px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 30px;
+  }
 `;
 
 export const SButtonClose = styled(Box)`
@@ -144,7 +160,7 @@ export const MuteButton = styled("button")`
   align-items: center;
   justify-content: center;
   padding: 10px 15px;
-  z-index: 10;
+  z-index: 9;
 
   p {
     font-size: 16px;
