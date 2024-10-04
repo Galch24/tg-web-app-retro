@@ -1,6 +1,6 @@
 //@ts-nocheck
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import { Dialog, DialogTitle, DialogContent, IconButton } from "@mui/material";
 import { styled } from "@mui/material";
@@ -193,6 +193,10 @@ export const Team = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [viewedItems, setViewedItems] = useState<number[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleClickOpen = (member: TeamMember) => {
     setSelectedMember(member);

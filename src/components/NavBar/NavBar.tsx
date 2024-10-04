@@ -1,10 +1,10 @@
 import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import HomeIcon from "@mui/icons-material/Home";
-import QueryStatsIcon from "@mui/icons-material/QueryStats";
-import Diversity3Icon from "@mui/icons-material/Diversity3";
-import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import HomeMaxOutlinedIcon from "@mui/icons-material/HomeMaxOutlined";
+import Diversity1OutlinedIcon from "@mui/icons-material/Diversity1Outlined";
+import DataObjectOutlinedIcon from "@mui/icons-material/DataObjectOutlined";
+import HomeRepairServiceOutlinedIcon from "@mui/icons-material/HomeRepairServiceOutlined";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -38,28 +38,28 @@ export const NavBar = () => {
       <BottomNavigationAction
         label='Главная'
         value='/'
-        icon={<HomeIcon />}
+        icon={<HomeMaxOutlinedIcon />}
         component={Link}
         to='/'
       />
       <BottomNavigationAction
         label='Команда'
         value='/team'
-        icon={<Diversity3Icon />}
+        icon={<Diversity1OutlinedIcon />}
         component={Link}
         to='/team'
       />
       <BottomNavigationAction
         label='Статистика'
         value='/stats'
-        icon={<QueryStatsIcon />}
+        icon={<DataObjectOutlinedIcon />}
         component={Link}
         to='/stats'
       />
       <BottomNavigationAction
         label='Кейсы'
         value='/cases'
-        icon={<BusinessCenterIcon />}
+        icon={<HomeRepairServiceOutlinedIcon />}
         component={Link}
         to='/cases'
       />

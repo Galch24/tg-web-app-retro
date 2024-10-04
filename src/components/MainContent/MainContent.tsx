@@ -46,26 +46,54 @@ const data = [
     ],
   },
   {
-    title: "Что автоматизиро&shy;вали:",
+    title: <span>Закупили, собрали и&nbsp;натроили свой сервер:</span>,
     id: "automate",
     list: [
       {
         marker: true,
         children: [
-          <span>Развернули свой сервер в&nbsp;ЦЕХу</span>,
+          <span>Настраиваем сервер под наши нужды</span>,
           <span>
-            Настроили свой гитлаб и&nbsp;перенесли в&nbsp;него все проекты
+            Экономия на&nbsp;подписках и&nbsp;закупках облачных хранилищ
           </span>,
+          <span>Гарантия конфиденциальности проектов</span>,
+        ],
+      },
+    ],
+  },
+
+  {
+    title: <span>Развернули и&nbsp;настроили свой Gitlab</span>,
+    id: "automate",
+    list: [
+      {
+        marker: true,
+        children: [
+          <span>Хранения исходников проектов</span>,
+          <span>Внедрение инструмента для стандартизации работы</span>,
+          <span>Удобство работы в&nbsp;команде над одним проетком</span>,
           <span>
-            Сделали бот, показывающий обновления в&nbsp;работе в&nbsp;ветках
-            гитлаб
+            Интеграция с&nbsp;ТГ ботом для отслеживания изменений в&nbsp;ветках
+            проекта
           </span>,
-          <span>Собрали webpack, для ускорения работы над сайтами</span>,
-          <span>Собрали шаблон для баннеров</span>,
-          <span>
-            Настроили свой шлюз для отправки смс кодов при регистрации
-          </span>,
-          <span>Создали свою базу знаний</span>,
+          <span>Code Review</span>,
+        ],
+      },
+    ],
+  },
+
+  {
+    title: <span>Quick Start Templates (шаблоны для экономии времени)</span>,
+    id: "automate",
+    list: [
+      {
+        marker: true,
+        children: [
+          <span>Webpack</span>,
+          <span>Strapi CMS</span>,
+          <span>Разметка для банеров</span>,
+          <span>Пакет для рассылки E-mail</span>,
+          <span>Пакет для интеграции с&nbsp;СМС шлюзом</span>,
         ],
       },
     ],
@@ -95,8 +123,8 @@ export const MainContent = () => {
           ease: "power1.inOut",
           scrollTrigger: {
             trigger: section,
-            start: "top 38%",
-            end: "top 25%",
+            start: "top 35%",
+            end: "top 30%",
             scrub: true,
             pin: true,
             onEnter: () => {
@@ -144,18 +172,11 @@ export const MainContent = () => {
 
   return (
     <Box ref={main} sx={{ width: "100%" }}>
-      <Hero className={"hero"}>
-        <h2>Dev Unit</h2>
-      </Hero>
       {data.map(section => (
         <section id={section.id} key={section.id} className='section'>
           <SBlockWrapper>
             <SContentWrapper>
-              <h2
-                dangerouslySetInnerHTML={{
-                  __html: `${section?.title}`,
-                }}
-              />
+              <h2>{section?.title}</h2>
               <ListWrapper>
                 {section.list.map((listItem, listIndex) => (
                   <ul key={listIndex}>
