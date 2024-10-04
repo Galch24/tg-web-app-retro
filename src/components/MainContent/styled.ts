@@ -23,13 +23,17 @@ export const SBlockWrapper = styled("div")`
 `;
 
 export const ListWrapper = styled("div")`
-  gap: 10px;
   display: flex;
   //align-items: center;
   justify-content: space-between;
-  margin-top: 16px;
+  margin-top: 24px;
   font-size: 16px;
   line-height: 120%;
+
+  span {
+    font-size: 20px;
+    line-height: 120%;
+  }
 
   ul > li {
     margin-bottom: 8px;
@@ -45,8 +49,9 @@ export const ListWrapper = styled("div")`
   }
 
   .rent {
-    font-size: 36px;
-    line-height: 0.9;
+    min-height: 40px;
+    font-size: 40px;
+    line-height: 120%;
     margin-bottom: 48px;
     text-align: center;
     background: linear-gradient(90deg, #5468ff 20%, #c471ed 80%, #1b1771 90%);

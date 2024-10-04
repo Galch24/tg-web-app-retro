@@ -39,6 +39,10 @@ const Main = () => {
   const [start, setStart] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (start) {
       document.body.style.overflow = "hidden";
     } else {
