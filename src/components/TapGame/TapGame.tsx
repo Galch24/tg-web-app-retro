@@ -105,7 +105,7 @@ export const TapGame = () => {
     const y = event.clientY - rect.top;
 
     if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-      setScore(score + 1);
+      setScore(score + 10);
       setPlusOnePosition({ x, y, visible: true });
 
       setTimeout(() => {
@@ -134,13 +134,19 @@ export const TapGame = () => {
             <PlusOne
               style={{ left: plusOnePosition.x, top: plusOnePosition.y }}
             >
-              +1
+              +10
             </PlusOne>
           )}
         </GameContainer>
         {score >= targetCoins && (
-          <DonationButton href={"https://www.tbank.ru/cf/5EDTiamDswN"}>
-            Задонатить
+          <DonationButton>
+            <a
+              href={"https://www.tbank.ru/cf/5EDTiamDswN"}
+              target={"_blank"}
+              style={{ color: "inherit" }}
+            >
+              Задонатить
+            </a>
           </DonationButton>
         )}
       </Container>
