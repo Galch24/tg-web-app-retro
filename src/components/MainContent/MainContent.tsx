@@ -30,16 +30,17 @@ const data = [
             </div>
           </div>,
           <div>
-            <h3>Увеличили выручку с&nbsp;начала&nbsp;года</h3>
-            <div className='rent'>
-              <strong>в&nbsp;2&nbsp;раза</strong>
-            </div>
-          </div>,
-          <div>
             <h3>Сократили кол-во урезанных часов</h3>
             <div className='rent'>
               <strong>на&nbsp;80%</strong>
             </div>
+            <div>
+              <h3>подняли выручку до&nbsp;соответствия плану</h3>
+              {/*<div className='rent'>*/}
+              {/*  <strong>в&nbsp;2&nbsp;раза</strong>*/}
+              {/*</div>*/}
+            </div>
+            ,
           </div>,
         ],
       },
