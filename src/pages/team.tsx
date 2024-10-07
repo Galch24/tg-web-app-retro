@@ -93,15 +93,17 @@ const SlideWrapper = styled("div")`
 
 const SlideWrapperImg = styled("div")`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
 
   img {
-    background: #000;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    background: #000;
   }
 `;
 
@@ -349,6 +351,7 @@ export const Team = () => {
                           loop={true}
                           controls={false}
                           autoPlay={false}
+                          muted={true}
                           style={{ width: "100%", height: "100%" }}
                         />
                       </SlideWrapperVideo>
