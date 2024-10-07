@@ -2,7 +2,13 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
-import { Dialog, DialogTitle, DialogContent, IconButton } from "@mui/material";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  IconButton,
+  Button,
+} from "@mui/material";
 import { styled } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -189,6 +195,23 @@ const Wrapper = styled("div")`
     font-size: 24px;
     margin-bottom: 10px;
   }
+
+  button {
+    width: 100%;
+    background: #141aff;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+    a {
+      color: inherit;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
 `;
 
 export const Team = () => {
@@ -368,6 +391,11 @@ export const Team = () => {
           <Wrapper>
             <h3>DEV CLAN</h3>
             <img src={teamImg} alt={"команда"} />
+            <Button>
+              <a href={"https://tsekh.tech/"} target={"_blank"}>
+                Наш сайт
+              </a>
+            </Button>
             <h4>Наш девиз: серьезно делать - это не интересно</h4>
             <p>
               Мы делаем работу с юмором, именно по - этому, с нами всегда легко
