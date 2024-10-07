@@ -110,6 +110,7 @@ const SlideWrapperImg = styled("div")`
 const SlideWrapperVideo = styled("div")`
   width: 100%;
   height: 100%;
+  overflow: hidden;
 
   video {
     object-fit: cover;
