@@ -143,7 +143,12 @@ export const TapGame = () => {
             <a
               href={"https://www.tbank.ru/cf/5EDTiamDswN"}
               target={"_blank"}
-              style={{ color: "inherit" }}
+              style={{
+                color: "inherit",
+                display: "block",
+                width: "100%",
+                height: "100%",
+              }}
             >
               Задонатить
             </a>
