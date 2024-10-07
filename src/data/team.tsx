@@ -1,12 +1,24 @@
 import team1 from "@/assets/img/team/1/photo.png";
+import team1slide2 from "@/assets/img/team/1/slide2/2.jpg";
+import team1slide3 from "@/assets/img/team/1/slide3/3.jpg";
+import team1slide4 from "@/assets/img/team/1/slide4/4.jpg";
 import team2 from "@/assets/img/team/2/photo.png";
 import team3 from "@/assets/img/team/3/photo.png";
 import team4 from "@/assets/img/team/4/photo.png";
+import team4slide2 from "@/assets/img/team/4/slide2/2.jpg";
+import team4slide3 from "@/assets/img/team/4/slide3/3.jpg";
 import team5 from "@/assets/img/team/5/photo.png";
 import team5slide2 from "@/assets/img/team/5/slide2/2.mp4";
+import team5slide3 from "@/assets/img/team/5/slide3/3.jpg";
+import team5slide4 from "@/assets/img/team/5/slide4/4.jpg";
 import team6 from "@/assets/img/team/6/photo.png";
+import team6slide2 from "@/assets/img/team/6/slide2/2.jpg";
 import team7 from "@/assets/img/team/7/photo.png";
 import team8 from "@/assets/img/team/8/photo.png";
+import team8slide2 from "@/assets/img/team/8/slide2/2.mp4";
+import team8slide3 from "@/assets/img/team/8/slide3/3.jpg";
+import team8slide4 from "@/assets/img/team/8/slide4/4.jpg";
+import team8slide5 from "@/assets/img/team/8/slide5/5.jpg";
 
 interface SlideInfo {
   features: string[];
@@ -43,10 +55,13 @@ export const teamList: TeamMember[] = [
         },
       },
       {
-        img: "2",
+        img: team1slide2,
       },
       {
-        video: team5slide2,
+        img: team1slide3,
+      },
+      {
+        img: team1slide4,
       },
     ],
     id: 1,
@@ -67,12 +82,12 @@ export const teamList: TeamMember[] = [
           desc: "Не только Бог вики страниц, HTML баннеров и вёрстки писем, но фичу для КС ГО собрать могет",
         },
       },
-      {
-        img: "2",
-      },
-      {
-        video: team5slide2,
-      },
+      // {
+      //   img: "2",
+      // },
+      // {
+      //   video: team5slide2,
+      // },
     ],
     id: 2,
   },
@@ -89,12 +104,12 @@ export const teamList: TeamMember[] = [
           desc: "Фигачет на Яндекс HR, как машина. Делает баннеры, вики странички и верстку лендингов",
         },
       },
-      {
-        img: "2",
-      },
-      {
-        video: team5slide2,
-      },
+      // {
+      //   img: "2",
+      // },
+      // {
+      //   video: team5slide2,
+      // },
     ],
     id: 3,
   },
@@ -115,10 +130,10 @@ export const teamList: TeamMember[] = [
         },
       },
       {
-        img: "2",
+        img: team4slide2,
       },
       {
-        video: team5slide2,
+        img: team4slide3,
       },
     ],
     id: 4,
@@ -143,7 +158,10 @@ export const teamList: TeamMember[] = [
         video: team5slide2,
       },
       {
-        img: "3",
+        img: team5slide3,
+      },
+      {
+        img: team5slide4,
       },
     ],
     id: 5,
@@ -167,10 +185,7 @@ export const teamList: TeamMember[] = [
         },
       },
       {
-        img: "2",
-      },
-      {
-        video: team5slide2,
+        img: team6slide2,
       },
     ],
     id: 6,
@@ -192,12 +207,12 @@ export const teamList: TeamMember[] = [
           desc: "фиксик, который делает так, чтобы нажимая на кнопку чайника он начал закипать, только с сайтами и сервисами. Нажимая на кнопку с функционалом, она работает, по тому что Паша построил “механизм” который сработал.",
         },
       },
-      {
-        img: "2",
-      },
-      {
-        video: team5slide2,
-      },
+      // {
+      //   img: "2",
+      // },
+      // {
+      //   video: team5slide2,
+      // },
     ],
     id: 7,
   },
@@ -220,10 +235,16 @@ export const teamList: TeamMember[] = [
         },
       },
       {
-        img: "2",
+        video: team8slide2,
       },
       {
-        video: team5slide2,
+        img: team8slide3,
+      },
+      {
+        img: team8slide4,
+      },
+      {
+        img: team8slide5,
       },
     ],
     id: 8,
