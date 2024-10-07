@@ -30,12 +30,12 @@ const data = [
             </div>
           </div>,
           <div>
-            <h3>Сократили кол-во урезанных часов</h3>
+            <h3>Сократили количество урезанных часов</h3>
             <div className='rent'>
               <strong>на&nbsp;80%</strong>
             </div>
             <div>
-              <h3>подняли выручку до&nbsp;соответствия плану</h3>
+              <h3>Подняли выручку до&nbsp;соответствия с&nbsp;планом</h3>
               {/*<div className='rent'>*/}
               {/*  <strong>в&nbsp;2&nbsp;раза</strong>*/}
               {/*</div>*/}
@@ -47,7 +47,7 @@ const data = [
     ],
   },
   {
-    title: <span>Закупили, собрали и&nbsp;натроили свой сервер:</span>,
+    title: <span>Закупили, собрали и&nbsp;настроили свой сервер:</span>,
     id: "automate",
     list: [
       {
@@ -70,9 +70,9 @@ const data = [
       {
         marker: true,
         children: [
-          <span>Хранения исходников проектов</span>,
+          <span>Хранение исходников проектов</span>,
           <span>Внедрение инструмента для стандартизации работы</span>,
-          <span>Удобство работы в&nbsp;команде над одним проетком</span>,
+          <span>Удобство работы в&nbsp;команде над одним проектом</span>,
           <span>
             Интеграция с&nbsp;ТГ ботом для отслеживания изменений в&nbsp;ветках
             проекта
@@ -92,7 +92,7 @@ const data = [
         children: [
           <span>Webpack</span>,
           <span>Strapi CMS</span>,
-          <span>Разметка для банеров</span>,
+          <span>Разметка для баннеров</span>,
           <span>Пакет для рассылки E-mail</span>,
           <span>Пакет для интеграции с&nbsp;СМС шлюзом</span>,
         ],
