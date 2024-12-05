@@ -1,17 +1,7 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Container, DropDownMenu } from "@/components/ui";
-import Nav from "@/components/nav/Nav";
 import { Logo } from "@/components/logo/Logo";
+import styled from "styled-components";
 
-import { useWindowSize } from "@/hooks/useWindowSize";
-import { media, theme } from "@/assets/styles/Theme";
-import { toggleMenu } from "@/store/slices/mobileMenuSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/store";
-import { SButtonClose } from "@/pages/styled";
-import { useTelegram } from "@/hooks/useTelegram";
+import { theme } from "@/assets/styles/Theme";
 
 const { palette } = theme;
 
@@ -124,8 +114,6 @@ const Header = () => {
   //   dispatch(toggleMenu());
   // };
 
-  const { onClose } = useTelegram();
-
   return (
     <>
       <HeaderBlock>
@@ -138,7 +126,6 @@ const Header = () => {
             {/*{windowWidth <= 1200 && (*/}
             {/*  <Burger onClick={toggleMobileNav} isActive={isOpen} />*/}
             {/*)}*/}
-            <SButtonClose onClick={onClose}>Закрыть</SButtonClose>
           </HeaderWrapperRight>
         </HeaderWrapper>
       </HeaderBlock>

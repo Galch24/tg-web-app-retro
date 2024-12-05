@@ -1,24 +1,29 @@
-const tg = window.Telegram.WebApp;
+import { init } from "@telegram-apps/sdk";
+import { useEffect, useState } from "react";
 
 export function useTelegram() {
+  const [user, setUser] = useState(null);
+  const [queryId, setQueryId] = useState(null);
+  const [chatId, setChatId] = useState(null);
 
-    const onClose = () => {
-        tg.close()
-    }
+  useEffect(() => {
+    try {
+      const tg = init();
 
-    const onToggleButton = () => {
-        if(tg.MainButton.isVisible) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-        }
-    }
+      const userData = tg?.getUser?.();
+      if (userData) {
+        setUser(userData);
+      }
 
-    return {
-        onClose,
-        onToggleButton,
-        tg,
-        user: tg.initDataUnsafe?.user,
-        queryId: tg.initDataUnsafe?.query_id,
+      const queryData = tg?.getQuery?.();
+      setQueryId(queryData?.id || null);
+
+      const chatData = tg?.getChat?.();
+      setChatId(chatData?.id || null);
+    } catch (error) {
+      console.error(error);
     }
+  }, []);
+
+  return { user, queryId, chatId };
 }

@@ -75,6 +75,7 @@
     "@mui/x-data-grid": "5.17.2",
     "@mui/x-date-pickers": "^5.0.2",
     "@reduxjs/toolkit": "^2.2.7",
+    "@telegram-apps/sdk": "^2.9.0",
     "@types/gsap": "^3.0.0",
     "@types/lodash": "^4.17.7",
     "@types/react-input-mask": "^3.0.2",
